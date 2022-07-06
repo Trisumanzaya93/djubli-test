@@ -244,7 +244,7 @@ function ViewAll() {
             Filter
           </Button>
           </Box>
-          <Grid container spacing={1} sx={{ mt: 3, ml: 3 }}>
+          <Grid container spacing={5} sx={{ mt: 3, ml: 3,pr:3 }}>
             {Array.isArray(product) &&
               product.length > 0 &&
               product.map((item, idx) => {

@@ -9,11 +9,11 @@ export default function MultiActionAreaCard(product) {
   const data = product.product
   console.log(data);
   return (
-    <Card sx={{ maxWidth: 245 }}>
+    <Card sx={{ maxWidth: 155 }}>
       <CardActionArea >
         <CardMedia
           component="img"
-          height="140"
+          height="100"
           image={data.image}
           alt="product"
         />
