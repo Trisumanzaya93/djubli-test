@@ -1,5 +1,5 @@
 import { Box, Button, CardContent, Paper, Typography } from '@mui/material'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import Footer from '../../component/footer'
@@ -12,10 +12,14 @@ function Detail() {
   const {id} = useParams()
   console.log(id);
 
-  const product = useSelector((state)=>state.product.data)
+  const product = useSelector((state)=>state.product.data.result)
+  const merk = useSelector((state)=>state.product.data.merk.brand)
+  const group_models = useSelector((state)=>state.product.data.group_models.grup_model)
+  const models = useSelector((state)=>state.product.data.models.model)
+  // console.log(merk,group_models,models);
   const getProduct =async()=>{
     try {
-      await dispath(getProductByIdAction(id))
+       dispath(getProductByIdAction(id))
     } catch (error) {
       console.log(error);
     }
@@ -23,7 +27,7 @@ function Detail() {
   useEffect(() => {
     getProduct()
   
-  }, [])
+  }, [id])
   
     
   return (
@@ -34,7 +38,7 @@ function Detail() {
             
         <CardContent>
           <Typography gutterBottom variant="h5" component="div" sx={{fontWeight:'bold',ml:3}}>
-          {product.merk.brand??""} {product.group_models.grup_model??""} {product.models.model??""}
+          {merk} {group_models} {models}
           </Typography>
           <Paper elevation={3}  sx={{m:3,p:3,display:"flex",flexDirection:"row",pl:5}}>
             <Box sx={{display:"flex",flexDirection:"column",mb:2}}>
@@ -50,22 +54,22 @@ function Detail() {
             <Typography variant="h6" sx={{mr:5,fontWeight:'bold'}}>Telpon:</Typography>
             </Box>
             <Box sx={{display:"flex",flexDirection:"column",mb:2}}>
-            <Typography variant="h6">{product.tahun??""}</Typography>
+            <Typography variant="h6">{product.tahun}</Typography>
             <Typography variant="h6">
-              {product.merk.brand??""}
+              {merk}
             </Typography>
             <Typography variant="h6">
-              {product.group_models.grup_model??""}
+              {group_models}
               </Typography>
             <Typography variant="h6">
-              {product.models.model??""}
+              {models}
               </Typography>
-            <Typography variant="h6">{product.status??""}</Typography>
-            <Typography variant="h6">{product.plat_nomor??""}</Typography>
-            <Typography variant="h6">{product.alamat??""}</Typography>
-            <Typography variant="h6">{product.nama_penjual??""}</Typography>
-            <Typography variant="h6">{product.alamat??""}</Typography>
-            <Typography variant="h6">{product.telp??""}</Typography>
+            <Typography variant="h6">{product.status}</Typography>
+            <Typography variant="h6">{product.plat_nomor}</Typography>
+            <Typography variant="h6">{product.alamat}</Typography>
+            <Typography variant="h6">{product.nama_penjual}</Typography>
+            <Typography variant="h6">{product.alamat}</Typography>
+            <Typography variant="h6">{product.telp}</Typography>
             </Box>
           </Paper>
           <Box sx={{display:"flex", justifyContent:'end',mr:3}}>

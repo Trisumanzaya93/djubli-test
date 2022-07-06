@@ -2,7 +2,12 @@ import { ACTION_STRING } from "../actions/actionString";
 import { ActionType } from "redux-promise-middleware";
 
 const initialState = {
-  data: {},
+  data: {
+    result:{},
+    merk:{},
+    group_models:{},
+    models:{}
+},
   filter: {},
   isPending: false,
   isFulfilled: false,

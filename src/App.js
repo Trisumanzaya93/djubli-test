@@ -20,8 +20,8 @@ function App() {
       <Route path="/detail/:id" element={<Detail/>} />
     </Routes>
   </Router>
-
   </ThemeProvider>
+
 
     </ReduxProvider>
   );
